@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ee">
+  <meta name="description" content="Discover Marinduque through its island landscapes, living traditions, and community-led ideas for thoughtful tourism.">
+  <title>Marinduque — Island Stories, Made Together</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #173b3b;
+      --muted: #667d78;
+      --paper: #f7f5ee;
+      --white: #fffefa;
+      --green: #1e6760;
+      --green-dark: #124d49;
+      --coral: #e8775e;
+      --sun: #f2c66d;
+      --line: #e6e4d9;
+      --serif: Georgia, "Times New Roman", serif;
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+
+    .topbar {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(23, 59, 59, .09);
+    }
+    .brand {
+      display: inline-flex;
+      gap: 11px;
+      align-items: center;
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: -.04em;
+      font-size: 17px;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+    }
+    .brand-mark svg { width: 21px; height: 21px; }
+    nav { display: flex; gap: 34px; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 650; }
+    nav a:hover, nav a:focus-visible { color: var(--green); }
+    nav .nav-cta {
+      color: var(--white);
+      background: var(--green);
+      border-radius: 999px;
+      padding: 12px 19px;
+    }
+    nav .nav-cta:hover, nav .nav-cta:focus-visible { color: white; background: var(--green-dark); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1.03fr;
+      gap: 52px;
+      align-items: center;
+      padding-block: 70px 82px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: var(--coral); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 560px;
+      margin: 19px 0;
+      font-family: var(--serif);
+      font-size: clamp(48px, 6.4vw, 78px);
+      font-weight: 500;
+      letter-spacing: -.065em;
+      line-height: .99;
+    }
+    h1 span { color: var(--green); font-style: italic; }
+    .hero-copy > p {
+      max-width: 440px;
+      margin-bottom: 27px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 20px;
+      border-radius: 999px;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .button svg { width: 16px; height: 16px; }
+    .hero-note { margin-top: 17px; color: #82918a; font-size: 11px; }
+    .artwork {
+      position: relative;
+      min-height: 440px;
+      overflow: hidden;
+      border-radius: 48% 48% 18px 18px;
+      background: #b7d9d1;
+    }
+    .artwork svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .art-label {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      padding: 11px 15px;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 999px;
+      background: rgba(255, 254, 250, .89);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+    }
+    .art-label span { color: var(--coral); margin-right: 5px; }
+
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: rgba(255, 254, 250, .55);
+    }
+    .ticker-inner {
+      min-height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 17px;
+      white-space: nowrap;
+    }
+    .ticker .dot { color: var(--coral); font-family: sans-serif; font-size: 14px; }
+
+    section.content { padding-block: 92px; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+    h2 {
+      max-width: 540px;
+      margin: 12px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 50px);
+      font-weight: 500;
+      letter-spacing: -.05em;
+      line-height: 1.08;
+    }
+    .section-heading > p {
+      max-width: 350px;
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .places {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+    .place-card {
+      min-height: 243px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 23px;
+      border-radius: 14px;
+      background: var(--white);
+      border: 1px solid rgba(23, 59, 59, .07);
+    }
+    .place-card::after {
+      position: absolute;
+      right: -24px;
+      bottom: -58px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(30, 103, 96, .12);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 17px rgba(30, 103, 96, .025), 0 0 0 35px rgba(30, 103, 96, .025);
+    }
+    .place-number { color: var(--coral); font-family: var(--serif); font-size: 17px; font-style: italic; }
+    .place-card h3 { margin: 0 0 7px; font-family: var(--serif); font-size: 25px; font-weight: 500; letter-spacing: -.03em; }
+    .place-card p { max-width: 270px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .place-card:nth-child(2) { background: #edf3e9; }
+    .place-card:nth-child(3) { background: #f5e9dc; }
+
+    .innovation {
+      position: relative;
+      overflow: hidden;
+      padding: 64px;
+      border-radius: 18px;
+      background: var(--green-dark);
+      color: white;
+    }
+    .innovation::after {
+      position: absolute;
+      top: -165px;
+      right: -75px;
+      width: 390px;
+      height: 390px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 32px rgba(255,255,255,.025), 0 0 0 66px rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+    .innovation .eyebrow { color: #b4d8c8; }
+    .innovation h2 { max-width: 600px; margin-bottom: 16px; }
+    .innovation-intro { max-width: 540px; color: #c7d8d0; font-size: 13px; line-height: 1.8; }
+    .idea-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 39px;
+    }
+    .idea { padding-top: 17px; border-top: 1px solid rgba(255,255,255,.25); }
+    .idea-icon { width: 28px; height: 28px; margin-bottom: 17px; color: var(--sun); }
+    .idea h3 { margin-bottom: 8px; font-family: var(--serif); font-size: 20px; font-weight: 500; }
+    .idea p { max-width: 270px; margin: 0; color: #c7d8d0; font-size: 12px; line-height: 1.7; }
+
+    .closing {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding-block: 68px 73px;
+    }
+    .closing h2 { max-width: 565px; }
+    .closing p { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+    footer { padding-block: 23px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .topbar { height: 68px; }
+      nav { gap: 16px; }
+      nav a { font-size: 12px; }
+      nav a:not(.nav-cta) { display: none; }
+      nav .nav-cta { padding: 10px 14px; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 55px 58px; }
+      h1 { max-width: 490px; font-size: clamp(52px, 12vw, 72px); }
+      .artwork { min-height: 350px; border-radius: 43% 43% 14px 14px; }
+      .ticker-inner { justify-content: flex-start; gap: 18px; min-height: 58px; font-size: 15px; }
+      .ticker-inner span:nth-of-type(n+6) { display: none; }
+      section.content { padding-block: 67px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 13px; }
+      .places { grid-template-columns: 1fr; }
+      .place-card { min-height: 195px; }
+      .innovation { padding: 35px 25px; }
+      .idea-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 28px; }
+      .idea { display: grid; grid-template-columns: 35px 1fr; column-gap: 10px; }
+      .idea-icon { grid-row: span 2; margin-bottom: 0; }
+      .idea h3 { margin-bottom: 5px; }
+      .closing { align-items: flex-start; flex-direction: column; padding-block: 52px; }
+      .footer-inner { flex-direction: column; gap: 7px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="#" aria-label="Marinduque home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 15c3.1-5.2 6.1-7.8 9-7.8s5.9 2.6 9 7.8M5 17.5h14M8 12.2l4-5 4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Marinduque
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#discover">Discover</a>
+      <a href="#ideas">What's next</a>
+      <a class="nav-cta" href="#visit">Plan a visit <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Island stories, made together</span>
+        <h1 id="hero-title">A little island.<br>A <span>world</span> of stories.</h1>
+        <p>Meet Marinduque through its welcoming communities, time-honored traditions, and the natural beauty of island life.</p>
+        <a class="button" href="#discover">Find your island story
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="hero-note">MIMAROPA, Philippines · Travel gently, connect deeply</div>
+      </div>
+      <div class="artwork" role="img" aria-label="Illustration of Marinduque's green island mountains rising above blue waters">
+        <svg viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d9e9d7"/><stop offset="1" stop-color="#9fcfc4"/></linearGradient>
+            <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#5eaaa0"/><stop offset="1" stop-color="#287b79"/></linearGradient>
+            <linearGradient id="hill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#608b67"/><stop offset="1" stop-color="#2f695c"/></linearGradient>
+          </defs>
+          <rect width="640" height="520" fill="url(#sky)"/>
+          <circle cx="466" cy="120" r="47" fill="#f5cb78"/>
+          <path d="M0 247c57-45 101-50 157-11 48-58 100-63 152-10 60-56 119-55 177-4 55-32 106-24 154 8v95H0z" fill="#8fb7a0" opacity=".72"/>
+          <path d="M0 309c70-55 133-49 193 9 50-66 111-86 183-31 55-58 128-54 204 10 21-13 41-17 60-12v105H0z" fill="url(#hill)"/>
+          <path d="M0 370c77-21 136-20 207 9 76-33 157-31 237 1 73-23 138-20 196 5v135H0z" fill="url(#water)"/>
+          <path d="M0 404c89-15 159-13 244 6s166 17 245-1 111-17 151-9" fill="none" stroke="#b9ddd0" stroke-width="3" opacity=".62"/>
+          <path d="M0 449c75-11 146-9 217 7 73 17 163 17 239 0s128-16 184-10" fill="none" stroke="#b9ddd0" stroke-width="2" opacity=".47"/>
+          <path d="M288 360c20-7 41-7 62 0l-31 19z" fill="#f4ead2"/>
+          <path d="M319 379v31" stroke="#f4ead2" stroke-width="2"/>
+          <path d="M315 365v11l-14-8z" fill="#e8775e"/>
+          <path d="M166 287c16-17 25-31 34-54m-4 50c19-15 33-25 49-36m-42 34c-9-19-15-31-29-43" fill="none" stroke="#315d50" stroke-width="4" stroke-linecap="round"/>
+          <path d="M481 294c12-19 18-32 22-52m-18 48c17-17 31-28 44-35m-43 34c-7-17-12-29-24-40" fill="none" stroke="#315d50" stroke-width="4" stroke-linecap="round"/>
+          <path d="M162 286c-19-15-28-13-36 1 13 8 25 8 36-1m-1 0c13-18 24-18 33-6-8 13-19 16-33 6m321 10c-16-14-25-12-32 1 11 8 22 8 32-1m0 0c13-17 23-17 32-5-8 12-19 15-32 5" fill="#356e56"/>
+          <path d="M412 203c13-12 23-12 36 0m-31 8c11-9 20-9 30 0" fill="none" stroke="#fffefa" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+        </svg>
+        <div class="art-label"><span>✳</span> The heart of island life</div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-label="Marinduque experiences">
+      <div class="wrap ticker-inner">
+        <span>Living heritage</span><span class="dot">✳</span>
+        <span>Blue horizons</span><span class="dot">✳</span>
+        <span>Local makers</span><span class="dot">✳</span>
+        <span>Island time</span><span class="dot">✳</span>
+        <span>Shared stories</span>
+      </div>
+    </div>
+
+    <section class="wrap content" id="discover" aria-labelledby="discover-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">A place to feel</span>
+          <h2 id="discover-title">Find your own way<br>into the story.</h2>
+        </div>
+        <p>From the island's storied streets to its quiet shores, every stop offers a chance to meet the people and culture that make Marinduque special.</p>
+      </div>
+      <div class="places">
+        <article class="place-card">
+          <span class="place-number">01 / Heritage</span>
+          <div><h3>Boac's old town</h3><p>Explore the historic heart of Boac and the hilltop Immaculate Conception Cathedral.</p></div>
+        </article>
+        <article class="place-card">
+          <span class="place-number">02 / Tradition</span>
+          <div><h3>Moriones season</h3><p>Discover the island's vivid Holy Week tradition, shaped by local craft, faith, and community.</p></div>
+        </article>
+        <article class="place-card">
+          <span class="place-number">03 / Coast</span>
+          <div><h3>Poctoy's blue</h3><p>Slow down by the shore in Torrijos, where island views invite you to linger a little longer.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap content" id="ideas" aria-labelledby="ideas-title">
+      <div class="innovation">
+        <span class="eyebrow">Tourism, with imagination</span>
+        <h2 id="ideas-title">Keep the culture close.<br>Let new ideas grow.</h2>
+        <p class="innovation-intro">Cultural innovation starts by listening to the people who carry a place's stories. Here are a few ways tourism can help those stories thrive.</p>
+        <div class="idea-grid">
+          <article class="idea">
+            <svg class="idea-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 27s9-8 9-15a9 9 0 1 0-18 0c0 7 9 15 9 15Z" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+            <h3>Story-led trails</h3><p>Imagine locally guided routes that bring heritage, food, and everyday island life together.</p>
+          </article>
+          <article class="idea">
+            <svg class="idea-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 23c5-1 8-5 11-13 3 8 6 12 11 13-7 5-15 5-22 0Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 10V5m-5 4 5-4 5 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Made on the island</h3><p>Create more space for local makers, guides, and small businesses to share their work.</p>
+          </article>
+          <article class="idea">
+            <svg class="idea-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 21c4-4 8-4 12 0s8 4 12 0M4 26c4-4 8-4 12 0s8 4 12 0M16 5c0 4-3 6-3 9a3 3 0 0 0 6 0c0-3-3-5-3-9Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Care for the coast</h3><p>Help visitors explore gently, respect nature, and leave more value in local communities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap closing" id="visit" aria-labelledby="visit-title">
+      <div>
+        <span class="eyebrow">Your story starts here</span>
+        <h2 id="visit-title">Come curious.<br>Leave connected.</h2>
+        <p>Make room for the unexpected. Marinduque will meet you there.</p>
+      </div>
+      <a class="button" href="#discover">Explore the island
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Marinduque · Island stories, made together</span>
+      <span>A celebration of place, people, and possibility.</span>
+    </div>
+  </footer>
+</body>
+</html>
